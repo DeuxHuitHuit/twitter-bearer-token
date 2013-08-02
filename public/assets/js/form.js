@@ -23,11 +23,17 @@
 	};
 	
 	var requestAuth = function (e) {
+		res.empty();
 		btn.disable(true);
 		
 		$.get('/create', getData())
 			.done(function (data) {
-				res.text(data.data.access_token || JSON.stringify(data.data || data.err, null, 4));
+				if (!!data.ok) {
+					res.text(data.data.access_token || JSON.stringify(data.data || data.err, null, 4));
+				} else {
+					res.text(data.err);
+				}
+				
 			})
 			.always(function () {
 				btn.disable(false);
