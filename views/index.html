@@ -1,0 +1,30 @@
+<% layout('layout/default') -%>
+<% script('/assets/js/form.js') -%>
+
+<form action="/create" method="POST">
+	<style scoped>
+		label {
+			display: block;
+		}
+		input {
+			width: 300px;
+		}
+	</style>
+	<fieldset>
+		<label>
+			Consumer key: 
+			<input id="txt-key" name="key" />
+		</label>
+		
+		<label>
+			Consumer scret: 
+			<input id="txt-secret" name="secret" />
+		</label>
+		
+		<button id="btn-generate">Generate</button>
+	</fieldset>
+	
+	<pre id="result">
+	
+	</pre>
+</form>
