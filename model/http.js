@@ -5,7 +5,7 @@ module.exports = function (options) {
 	options.callback = options.callback || function () {};
 
 	var req = http.request({
-			hostname: 'api.twitter.com',
+			hostname: options.hostname,
 			port: 443,
 			path: options.path,
 			method: options.verb || 'GET',
@@ -15,15 +15,15 @@ module.exports = function (options) {
 			
 			res.setEncoding('utf8');
 			
-			//console.log(res.statusCode);
-			//console.dir(res.headers);
+			console.log(res.statusCode);
+			console.dir(res.headers);
 			
 			res.on('data', function(d) {
 				buffer += d;
 			});
 			
 			res.on('end', function (d) {
-				//process.stdout.write(buffer);
+				process.stdout.write(buffer);
 				options.callback(null, JSON.parse(buffer));
 			});
 		});

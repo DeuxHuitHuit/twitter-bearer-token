@@ -6,6 +6,7 @@ module.exports = {
 		var basic = new Buffer(consumerKey + ':' + consumerSecret).toString('base64');
 		
 		httpRequest({
+			hostname: 'api.twitter.com',
 			path: '/oauth2/token',
 			verb: 'POST',
 			visitReq: function (req) {

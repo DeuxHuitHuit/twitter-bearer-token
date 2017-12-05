@@ -6,12 +6,12 @@
 <h3>Easily create a twitter app-level bearer token credentials.</h4>
 
 <p>Simply enter your consumer key and consumer secret provided by Twitter via their 
-	<a href="https://dev.twitter.com/apps" target="_blank">dev center</a>.</p>
+	<a href="https://apps.twitter.com/" target="_blank">app center</a>.</p>
 	
 <p>We do not record any information. We simply pass your key and secret to twitter. If you prefer to do this
 offline, <a href="https://github.com/DeuxHuitHuit/twitter-bearer-token" target="_blank">download the project</a> and run it on your machine.</p>
 
-<form action="/create" method="POST">
+<div>
 	<style scoped>
 		label {
 			display: block;
@@ -20,21 +20,62 @@ offline, <a href="https://github.com/DeuxHuitHuit/twitter-bearer-token" target="
 			width: 300px;
 		}
 	</style>
-	<fieldset>
-		<label>
-			Consumer key: 
-			<input id="txt-key" name="key" />
-		</label>
+
+	<form action="/create" method="POST">
 		
-		<label>
-			Consumer scret: 
-			<input id="txt-secret" name="secret" />
-		</label>
+		<fieldset>
+			<legend>
+				Twitter
+			</legend>
+			<label>
+				Consumer key: 
+				<input id="txt-key" name="key" />
+			</label>
+			
+			<label>
+				Consumer secret: 
+				<input id="txt-secret" name="secret" />
+			</label>
+			
+			<button id="btn-generate">Generate</button>
+		</fieldset>
+	</form>
+	
+	<form action="/instagram" method="POST">
+		<fieldset>
+			<legend>
+				Instagram
+			</legend>
+			
+			<label>
+				Client ID: 
+				<input id="txt-key" name="key" />
+			</label>
+			
+			<label>
+				Scope: 
+				<input id="txt-scope" name="scope" value="public_content" />
+			</label>
+			
+			<% if (!!code) { %>
+			
+			<label>
+				Client secret: 
+				<input id="txt-secret" name="secret" />
+			</label>
+			
+			<label>
+				Auth code: 
+				<input id="txt-code" name="code" value="<%= code %>" />
+			</label>
+			
+			<% } %>
+			
+			<button id="btn-generate">Generate</button>
+		</fieldset>
 		
-		<button id="btn-generate">Generate</button>
-	</fieldset>
-	
-	<pre id="result">
-	
-	</pre>
-</form>
+		<pre id="result">
+		
+		</pre>
+	</form>
+</div>
