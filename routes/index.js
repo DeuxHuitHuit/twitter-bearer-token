@@ -1,13 +1,16 @@
-/*
+'use strict';
+/**
  * Routes
  */
- 
+
 var twitter = require('../model/twitter.js');
 
 module.exports = {
 	index: function(req, res, next) {
+		console.log('index');
 		res.render('index', {
-			title : 'Twitter bearer token creator'
+			title : 'Twitter bearer token creator',
+			year: (new Date()).getFullYear()
 		});
 	},
 	create: function(req, res, next) {
